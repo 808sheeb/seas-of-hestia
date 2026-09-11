@@ -1,0 +1,74 @@
+.space-r {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.space-b {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+.space-r-i {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.space-b-i {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  text-align: center;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  /* border: solid 2px white; */
+}
+
+game {
+  color: #fff;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  font-size: 14px;
+}
+
+#next {
+  margin-top: 10px; 
+}
+
+.blank {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.blank:hover {
+  cursor: help;
+}
+
+canvas {
+  display: block;
+}
+
+#footer {
+  font-size: 12px;
+  color: #444;
+  padding: 10px;
+}
