@@ -72,3 +72,27 @@ canvas {
   color: #444;
   padding: 10px;
 }
+
+@media (max-width: 600px) {
+  game {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  #footer {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  game {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  #m {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
