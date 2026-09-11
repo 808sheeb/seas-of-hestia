@@ -235,7 +235,7 @@ document.getElementById("next").addEventListener("click", () => {
     document.getElementById("g").innerHTML = finalPoem(currentSessionHistory);
     document.getElementById("next").innerHTML = "reset";
     document.getElementById("p").style.display = 'inline';
-    document.getElementById("m").style.padding = "10px 0px 0px 0px";
+    document.getElementById("m").style.paddingTop = "10px";
     stageIndex++;
     return;
   }
@@ -243,7 +243,7 @@ document.getElementById("next").addEventListener("click", () => {
   if (stageIndex >= narrative.stages.length+1) {
     refresh();
     stageIndex = 0;
-    document.getElementById("m").style.padding = "0px 0px 0px 0px";
+    document.getElementById("m").style.paddingTop = "0px";
   }
 
   loadStage(stageIndex);
@@ -502,11 +502,8 @@ function finalPoem(session) {
 
 function magicUserBaby() {
   let w = lockedChoices.weapon;
-  let g = lockedChoices.gift;
 
-  if(g == "enchantment") {
-    return true;
-  } else if(w == "sword" || w == "bow & arrow" || w == "flail" || w == "shield" || w == "glock") {
+  if(w == "sword" || w == "bow & arrow" || w == "flail" || w == "shield" || w == "glock") {
     return false;
   } else {
     return true;
