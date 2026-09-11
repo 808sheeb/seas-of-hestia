@@ -87,11 +87,6 @@ canvas {
   #p {
     display: none !important;
   }
-  #m {
-    padding-left: 16px;
-    padding-right: 16px;
-    box-sizing: border-box;
-  }
 }
 
 @media (max-width: 400px) {
