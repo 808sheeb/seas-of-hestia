@@ -1,2 +1,3 @@
-# seas-of-hestia
-Seas of Hestia is choose-your-own adventure fantasy world building game where the player explores mysterious lands, using a madlibs-like generative poetry mechanic.
+# Seas of Hestia
+
+Seas of Hestia is choose-your-own adventure fantasy world building game where the player explores mysterious lands, using a madlibs-like generative poetry mechanic. Almost rogue-like in nature, the game is played in runs with no definitive ending. Entirely text based, the story is written in cryptic fragments containing “blanks” or exchangeable words, which the player can change through randomly shuffling the blank. Blanks have the potential to lock key characteristics of the player run as well have other softer implications in regards to worldbuilding or picking a general theme for that specific run. 
