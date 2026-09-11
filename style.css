@@ -75,24 +75,30 @@ canvas {
 
 @media (max-width: 600px) {
   game {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
   }
   #footer {
     font-size: 14px;
   }
-}
-
-@media (max-width: 400px) {
-  game {
-    font-size: 20px;
+  #b button {
+    font-size: 16px;
   }
-}
-
-@media (max-width: 600px) {
+  #p {
+    display: none !important;
+  }
   #m {
     padding-left: 16px;
     padding-right: 16px;
     box-sizing: border-box;
+  }
+}
+
+@media (max-width: 400px) {
+  game {
+    font-size: 18px;
+  }
+  #b button {
+    font-size: 18px;
   }
 }
