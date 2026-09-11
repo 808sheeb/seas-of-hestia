@@ -436,7 +436,7 @@ const STAGE_TRANSITIONS = {
     if(t == "rest"){
       return 33;
     } else {
-      return 38;
+      return 23;
     }
   },
   32: (blanks, locked) => {
@@ -466,10 +466,7 @@ const STAGE_TRANSITIONS = {
   },
   37: (blanks, locked) => {
     return narrative.stages.length;
-  },
-  38: (blanks, locked) => {
-    return 23;
-  },
+  }
 };
 
 function gameStateManager(index, history, blanks) {
