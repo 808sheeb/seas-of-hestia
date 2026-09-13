@@ -23,8 +23,6 @@ html, body {
   padding: 0;
   background-color: #111;
   text-align: center;
-
-
 }
 
 .unselect {
@@ -122,5 +120,15 @@ canvas {
   }
   #b button {
     font-size: 18px;
+  }
+}
+
+@media print{
+  #p {
+    display: none !important;
+  }
+
+  #next {
+    display: none;
   }
 }

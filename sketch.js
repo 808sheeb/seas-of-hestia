@@ -225,9 +225,9 @@ document.getElementById("next").addEventListener("click", () => {
     currentSessionHistory,
     currentBlanks
   );
-  print("Stages:" + narrative.stages.length);
-  print("Last Index: " + stageIndex);
-  print("Current Index: " + nextIndex);
+  //print("Stages:" + narrative.stages.length);
+  //print("Last Index: " + stageIndex);
+  //print("Current Index: " + nextIndex);
   stageIndex = nextIndex;
 
   
