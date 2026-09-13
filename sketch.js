@@ -232,6 +232,7 @@ document.getElementById("next").addEventListener("click", () => {
 
   
   if (stageIndex == narrative.stages.length) {
+    document.getElementById("g").classList.remove("unselect");
     document.getElementById("g").innerHTML = finalPoem(currentSessionHistory);
     document.getElementById("next").innerHTML = "reset";
     document.getElementById("p").style.display = 'inline';
@@ -243,6 +244,7 @@ document.getElementById("next").addEventListener("click", () => {
   if (stageIndex >= narrative.stages.length+1) {
     refresh();
     stageIndex = 0;
+    document.getElementById("g").classList.add("unselect");
     document.getElementById("m").style.paddingTop = "0px";
   }
 
