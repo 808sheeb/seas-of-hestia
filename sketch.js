@@ -435,7 +435,8 @@ const STAGE_TRANSITIONS = {
     } else {
       return 31;
     }
-  },
+  }, // why is 30 ending the flow
+  // LEAVING IT HERE, FIGURE THAT OUT, IDK WHY WHEN YOU SELECT MAGICAL ITEM & MENDING KIT YOU CAN NEVER GET IT TO 28...
   31: (blanks, locked) => {
     let t = blanks[1].word;
     if(t == "rest"){
