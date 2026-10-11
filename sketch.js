@@ -381,7 +381,7 @@ const STAGE_TRANSITIONS = {
     return narrative.stages.length;
   },
   21: (blanks, locked) => {
-    let t = blanks[2].word;
+    let t = blanks[1].word;
     if(t == "warm the others"){
       return 20;
     } else if (t == "accept fate") {
