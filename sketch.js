@@ -471,7 +471,7 @@ const STAGE_TRANSITIONS = {
   },
   37: (blanks, locked) => {
     return narrative.stages.length;
-  }
+  },
   38: (blanks, locked) => {
     return 28;
   }
