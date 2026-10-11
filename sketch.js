@@ -305,7 +305,7 @@ const STAGE_TRANSITIONS = {
   },
 
   6: (blanks, locked) => {
-    let t = blanks[2].word;
+    let t = blanks[1].word;
     if (t == "calm") {
       return 7;
     }
@@ -427,7 +427,10 @@ const STAGE_TRANSITIONS = {
     return narrative.stages.length;
   },
   30: (blanks, locked) => {
-    if(magicUserBaby()) {
+    let t = lockedChoices.gift
+    if(magicUserBaby() && t == "+1 mending kit") {
+      return 38;
+    } else if(magicUserBaby()) {
       return 32;
     } else {
       return 31;
@@ -442,7 +445,7 @@ const STAGE_TRANSITIONS = {
     }
   },
   32: (blanks, locked) => {
-    return narrative.stages.length;
+    return 28;
   },
   
   33: (blanks, locked) => {
@@ -468,6 +471,9 @@ const STAGE_TRANSITIONS = {
   },
   37: (blanks, locked) => {
     return narrative.stages.length;
+  }
+  38: (blanks, locked) => {
+    return 28;
   }
 };
 
