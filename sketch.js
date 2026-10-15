@@ -381,15 +381,13 @@ const STAGE_TRANSITIONS = {
     return narrative.stages.length;
   },
   21: (blanks, locked) => {
-    let t = blanks[2].words;
-    if(t == "warm the others"){
+    let t = blanks[1].word;
+    if(t == "warn the others"){
       return 20;
     } else if (t == "accept fate") {
       return 22;
     } else {
-      if(magicUserBaby()){
         return 24;
-      }
     }
   },
   22: (blanks,locked) => {
@@ -428,6 +426,7 @@ const STAGE_TRANSITIONS = {
   },
   30: (blanks, locked) => {
     let t = lockedChoices.gift
+    print(t);
     if(magicUserBaby() && t == "+1 mending kit") {
       return 38;
     } else if(magicUserBaby()) {
@@ -435,8 +434,7 @@ const STAGE_TRANSITIONS = {
     } else {
       return 31;
     }
-  }, // why is 30 ending the flow
-  // LEAVING IT HERE, FIGURE THAT OUT, IDK WHY WHEN YOU SELECT MAGICAL ITEM & MENDING KIT YOU CAN NEVER GET IT TO 28...
+  },
   31: (blanks, locked) => {
     let t = blanks[1].word;
     if(t == "rest"){
