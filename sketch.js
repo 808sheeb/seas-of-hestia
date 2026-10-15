@@ -326,7 +326,7 @@ const STAGE_TRANSITIONS = {
     return narrative.stages.length;
   },
 
-  // 10 can be reached from 7
+  // 10 can be reached from 7, it will always go to 11
   
   11: (blanks, locked) => {
     return narrative.stages.length;
@@ -444,7 +444,7 @@ const STAGE_TRANSITIONS = {
     }
   },
   32: (blanks, locked) => {
-    return 28;
+    return narrative.stages.length;
   },
   
   33: (blanks, locked) => {
