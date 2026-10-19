@@ -22,11 +22,27 @@
     </div>
     <script src="sketch.js"></script>
     <script>
-      function kioskOrBrowserPrint() {
-        if (window.kioskPrint) {
-          window.kioskPrint.print();   // silent print in the Electron kiosk
-        } else {
-          window.print();              // normal print in regular Chrome
+      let printing = false;
+
+      async function kioskOrBrowserPrint() {
+        if (printing) return;          // blocks the repeat calls
+        printing = true;
+        try {
+          if (window.kioskPrint) {
+            const result = await window.kioskPrint.print();
+            console.log('print result:', result);
+            if (result.success) {
+              resetPoem();
+            } else {
+              console.warn('Print failed:', result.reason);
+              // optionally show "Printer unavailable, try again" on screen
+            }
+          } else {
+            window.print();            // regular Chrome fallback
+            resetPoem();               // can't detect success here
+          }
+        } finally {
+          printing = false;
         }
       }
     </script>

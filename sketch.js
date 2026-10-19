@@ -243,9 +243,6 @@ document.getElementById("next").addEventListener("click", () => {
 
   if (stageIndex >= narrative.stages.length+1) {
     refresh();
-    stageIndex = 0;
-    document.getElementById("g").classList.add("unselect");
-    document.getElementById("m").style.paddingTop = "0px";
   }
 
   loadStage(stageIndex);
@@ -493,6 +490,9 @@ function refresh() {
   currentSessionHistory = [];
   document.getElementById("next").innerHTML = "proceed";
   lockedChoices = {};
+  stageIndex = 0;
+  document.getElementById("g").classList.add("unselect");
+  document.getElementById("m").style.paddingTop = "0px";
   //console.log("refreshed");
 }
 
