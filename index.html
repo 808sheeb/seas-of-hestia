@@ -25,22 +25,23 @@
       let printing = false;
 
       async function kioskOrBrowserPrint() {
-        if (printing) return;          // blocks the repeat calls
+        if (printing) return;
         printing = true;
         try {
           if (window.kioskPrint) {
             const result = await window.kioskPrint.print();
-            console.log('print result:', result);
+            console.log('print result:', JSON.stringify(result));
             if (result.success) {
-              resetPoem();
-            } else {
+              setTimeout(() => location.reload(), 2000);   // reload after 2s
+            } else if (result.reason !== 'duplicate') {
               console.warn('Print failed:', result.reason);
-              // optionally show "Printer unavailable, try again" on screen
             }
           } else {
-            window.print();            // regular Chrome fallback
-            refresh();               // can't detect success here
+            window.print();
+            setTimeout(() => location.reload(), 2000);
           }
+        } catch (err) {
+          console.error('print flow error:', err);
         } finally {
           printing = false;
         }
