@@ -76,8 +76,8 @@ function extractBraces(str) {
       i++;
     }
   }
-  //print(read)
-  //print(contents)
+  //console.log(read)
+  //console.log(contents)
   return { read, contents };
 }
 
@@ -219,15 +219,15 @@ document.getElementById("next").addEventListener("click", () => {
   });
 
   currentSessionHistory.push(currentText);
-  //print(currentSessionHistory);
+  //console.log(currentSessionHistory);
   const nextIndex = gameStateManager(
     stageIndex,
     currentSessionHistory,
     currentBlanks
   );
-  print("Stages:" + narrative.stages.length);
-  print("Last Index: " + stageIndex);
-  print("Current Index: " + nextIndex);
+  console.log("Stages:" + narrative.stages.length);
+  console.log("Last Index: " + stageIndex);
+  console.log("Current Index: " + nextIndex);
   stageIndex = nextIndex;
 
   
@@ -426,7 +426,7 @@ const STAGE_TRANSITIONS = {
   },
   30: (blanks, locked) => {
     let t = lockedChoices.gift
-    print(t);
+    console.log(t);
     if(magicUserBaby() && t == "+1 mending kit") {
       return 38;
     } else if(magicUserBaby()) {
@@ -453,7 +453,7 @@ const STAGE_TRANSITIONS = {
   34: (blanks, locked) => {
     let t = lockedChoices.gift;
     let r = random(1);
-    //print(r);
+    //console.log(r);
     if(t == "ball of fire"){
       return 35;
     } else if(r > 0.5){
@@ -493,7 +493,7 @@ function refresh() {
   currentSessionHistory = [];
   document.getElementById("next").innerHTML = "proceed";
   lockedChoices = {};
-  //print("refreshed");
+  //console.log("refreshed");
 }
 
 function finalPoem(session) {
