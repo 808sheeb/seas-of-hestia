@@ -123,36 +123,45 @@ canvas {
   }
 }
 
-@media print{
-
+@media print {
   @page { size: 80mm auto; margin: 0; }
 
   html, body {
     width: 80mm;
+    height: auto;
     margin: 0;
     padding: 0;
+    display: block;
     background: #fff !important;
-    color: #000 !important;
   }
 
   body * { visibility: hidden; }
-  #g, #g * { visibility: visible; }
+  #g, #g * {
+    visibility: visible;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+  }
+
+  main {
+    display: block;
+    overflow: visible;
+    height: auto;
+  }
 
   #g {
+    display: block;
     position: absolute;
     left: 0;
     top: 0;
-    width: 72mm;              /* most 80mm printers only print ~72mm */
+    width: 72mm;
     margin: 0 4mm;
     text-align: center;
-    background: none !important;
+    font-size: 12px;
   }
 
-  #p {
+  #p, #next, #footer {
     display: none !important;
-  }
-
-  #next {
-    display: none;
   }
 }
