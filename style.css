@@ -52,9 +52,8 @@ main {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: safe center;   /* was: center */
   align-items: center;
-  /* border: solid 2px white; */
 }
 
 game {
