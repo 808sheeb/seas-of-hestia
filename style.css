@@ -127,41 +127,34 @@ canvas {
   @page { size: 80mm auto; margin: 0; }
 
   html, body {
-    width: 80mm;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    display: block;
+    width: 80mm !important;
+    height: auto !important;
+    display: block !important;
     background: #fff !important;
   }
 
-  body * { visibility: hidden; }
+  #footer, #b, #p, #next { display: none !important; }
+
+  main {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #g {
+    display: block !important;
+    position: static !important;
+    width: 72mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    font-size: 12px !important;
+  }
+
   #g, #g * {
-    visibility: visible;
     color: #000 !important;
     -webkit-text-fill-color: #000 !important;
     background: transparent !important;
     text-shadow: none !important;
-  }
-
-  main {
-    display: block;
-    overflow: visible;
-    height: auto;
-  }
-
-  #g {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 72mm;
-    margin: 0 4mm;
-    text-align: center;
-    font-size: 12px;
-  }
-
-  #p, #next, #footer {
-    display: none !important;
+    visibility: visible !important;
   }
 }

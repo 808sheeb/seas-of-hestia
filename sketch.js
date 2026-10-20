@@ -483,17 +483,18 @@ function gameStateManager(index, history, blanks) {
 }
 
 function refresh() {
-  stageIndex = 0;
-  currentBlanks = [];
-  previousBlanks = [];
-  currentText = "";
-  currentSessionHistory = [];
-  document.getElementById("next").innerHTML = "proceed";
-  lockedChoices = {};
-  stageIndex = 0;
-  document.getElementById("g").classList.add("unselect");
-  document.getElementById("m").style.paddingTop = "0px";
+  // stageIndex = 0;
+  // currentBlanks = [];
+  // previousBlanks = [];
+  // currentText = "";
+  // currentSessionHistory = [];
+  // document.getElementById("next").innerHTML = "proceed";
+  // lockedChoices = {};
+  // stageIndex = 0;
+  // document.getElementById("g").classList.add("unselect");
+  // document.getElementById("m").style.paddingTop = "0px";
   //console.log("refreshed");
+  location.reload();
 }
 
 function finalPoem(session) {
