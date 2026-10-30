@@ -1,0 +1,14 @@
+/* ---- local fonts (replaces Google Fonts so it works offline) ---- */
+@font-face { font-family: "Space Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/space-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/space-mono-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/space-mono-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-style: italic; font-weight: 700; font-display: swap; src: url("fonts/space-mono-latin-700-italic.woff2") format("woff2"); }
+
+/* ---- non-visual touch behavior only (no look changes) ---- */
+html, body {
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
+/* printing is automatic when the game ends, so no manual print button */
+#p { display: none !important; }

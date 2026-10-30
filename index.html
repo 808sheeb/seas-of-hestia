@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.jsdelivr.net/npm/p5@2.3.2/lib/p5.js"></script><script src="https://cdn.jsdelivr.net/npm/p5.js-compatibility@0.2.0/src/preload.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seas of Hestia</title>
+    <!-- all assets are local so this runs with no internet -->
+    <script src="vendor/p5.min.js"></script>
+    <script src="vendor/p5-preload-compat.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="kiosk.css">
   </head>
   <body>
     <main id="m">
       <game id="g" class="space-r unselect"></game>
       <div id="b" class="unselect">
         <button id="next">proceed</button>
-        <button id="p" onclick="window.print();">print</button>
+        <button id="p" onclick="printPoem();">print</button>
       </div>
     </main>
     <div id="footer" class="space-r">
       by lockbearer
     </div>
     <script src="sketch.js"></script>
+    <script src="print.js"></script>
+    <script>
+      // kiosk: no right-click / long-press context menu
+      window.addEventListener("contextmenu", (e) => e.preventDefault());
+    </script>
   </body>
 </html>

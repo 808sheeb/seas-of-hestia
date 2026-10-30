@@ -234,6 +234,7 @@ document.getElementById("next").addEventListener("click", () => {
   if (stageIndex == narrative.stages.length) {
     document.getElementById("g").classList.remove("unselect");
     document.getElementById("g").innerHTML = finalPoem(currentSessionHistory);
+    if (typeof onGameEnd === "function") onGameEnd(); // kiosk: auto-print (see print.js)
     document.getElementById("next").innerHTML = "reset";
     document.getElementById("p").style.display = 'inline';
     document.getElementById("m").style.paddingTop = "10px";
@@ -478,11 +479,19 @@ const STAGE_TRANSITIONS = {
 
 function gameStateManager(index, history, blanks) {
   const rule = STAGE_TRANSITIONS[index];
+  let next;
   if (rule) {
-    return rule(blanks, lockedChoices);
+    next = rule(blanks, lockedChoices);
   } else {
-    return index + 1;
+    next = index + 1;
   }
+  // safety net: if a rule returns nothing / something invalid, end the run instead of crashing
+  // (values past the last stage are legitimate: the engine uses them to trigger the reset)
+  if (!Number.isInteger(next) || next < 0) {
+    console.warn("bad transition from stage " + index + " -> " + next + ", ending run");
+    return narrative.stages.length;
+  }
+  return next;
 }
 
 function refresh() {
