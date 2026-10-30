@@ -1,3 +1,8 @@
+/* Scale everything by changing this one value (200% = 32px root) */
+html {
+  font-size: 200%;
+}
+
 .space-r {
   font-family: "Space Mono", monospace;
   font-weight: 400;
@@ -18,12 +23,12 @@
   font-weight: 700;
   font-style: italic;
 }
+
 html, body {
   margin: 0;
   padding: 0;
   background-color: #111;
   text-align: center;
-  zoom: 150%; /* or 1.5, adjust to taste */
 }
 
 .unselect {
@@ -64,19 +69,25 @@ game {
   justify-content: center;
   align-items: center;
   background-color: #111;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px at a 16px root */
+}
+
+button {
+  font-size: 1rem;
+  font-family: "Space Mono", monospace;
+  padding: 0.25rem 0.75rem;
 }
 
 #next {
-  margin-top: 10px; 
+  margin-top: 0.625rem; /* 10px */
 }
 
 .blank {
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: italic;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0.3125rem; /* 5px */
+  padding-right: 0.3125rem;
 }
 
 .blank:hover {
@@ -89,42 +100,42 @@ canvas {
 
 #footer {
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   color: #444;
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
 }
 
 @media (max-width: 600px) {
   game {
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.5;
   }
   #footer {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   #b button {
-    font-size: 16px;
+    font-size: 1rem;
   }
   #p {
     display: none !important;
   }
   #m {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     box-sizing: border-box;
   }
 }
 
 @media (max-width: 400px) {
   game {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   #b button {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 }
 
-@media print{
+@media print {
   #p {
     display: none !important;
   }
