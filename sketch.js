@@ -7,6 +7,7 @@ let currentBlanks = [];
 let previousBlanks = [];
 let currentText = "";
 let currentSessionHistory = [];
+let resetTimer = null;
 
 // sticky categories: once they are chosen, they remain the same for the rest of the run----
 const STICKY_CATEGORIES = ["weapon", "jewel", "deity", "gift", "groups2", "action7"];
@@ -205,7 +206,8 @@ document.getElementById("g").addEventListener("click", (e) => {
 });
 
 document.getElementById("next").addEventListener("click", () => {
-
+  // clear timer if there was a manual reset
+  clearTimeout(resetTimer);
   // lock in any sticky categories showing on this stage, using whatever's
   // currently displayed. only happens once per category (first time seen).
   previousBlanks = currentBlanks;
@@ -231,14 +233,25 @@ document.getElementById("next").addEventListener("click", () => {
   stageIndex = nextIndex;
 
   
+
+  // making a lot of changes to the final screen for IA Current: Poodle Soup
+  // mainly that the final poem won't show on screen but rather will auto print
   if (stageIndex == narrative.stages.length) {
-    document.getElementById("g").classList.remove("unselect");
-    document.getElementById("g").innerHTML = finalPoem(currentSessionHistory);
+    // doesn't need to be selectable for physical experience
+    // document.getElementById("g").classList.remove("unselect");
+    document.getElementById("g").innerHTML = "thank u for exploring <3";
     if (typeof onGameEnd === "function") onGameEnd(); // kiosk: auto-print (see print.js)
     document.getElementById("next").innerHTML = "reset";
     document.getElementById("p").style.display = 'inline';
     document.getElementById("m").style.paddingTop = "10px";
     stageIndex++;
+
+
+      // auto-reset after 15 seconds
+    resetTimer = setTimeout(() => {
+      document.getElementById("next").click();
+    }, 15000);
+    
     return;
   }
 

@@ -23,6 +23,7 @@ html, body {
   padding: 0;
   background-color: #111;
   text-align: center;
+  zoom: 150%; /* or 1.5, adjust to taste */
 }
 
 .unselect {
