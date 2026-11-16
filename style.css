@@ -85,10 +85,20 @@ canvas {
   display: block;
 }
 
+#footer {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #444;
+  padding: 10px;
+}
+
 @media (max-width: 600px) {
   game {
     font-size: 16px;
     line-height: 1.5;
+  }
+  #footer {
+    font-size: 14px;
   }
   #b button {
     font-size: 16px;
@@ -122,7 +132,7 @@ canvas {
     background: #fff !important;
   }
 
-  #b, #p, #next { display: none !important; }
+  #footer, #b, #p, #next { display: none !important; }
 
   main {
     display: block !important;
