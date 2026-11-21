@@ -9,33 +9,16 @@ let currentText = "";
 let currentSessionHistory = [];
 
 // sticky categories: once they are chosen, they remain the same for the rest of the run----
-const STICKY_CATEGORIES = ["weapon", "jewel", "deity", "gift", "groups2", "action7"];
+const STICKY_CATEGORIES = ["op"];
 let lockedChoices = {};
 
 // each category and the corresponding color they will be shown in
 const CATEGORY_COLORS = {
-  adjective: "#be5abe",
-  things: "#50be78",
-  verbed: "#5a78dc",
-  verbing: "#5a78dc",
-  verb: "#5a78dc",
-  place: "#dc9646",
-  groups: "#dc5a6e",
-  groups2: "#dc5a6e",
-  bad_feeling: "#dc5a6e",
-  deity: "#3abebe",
-  weapon: "#67e864",
-  action1: "#be6ede",
-  action2: "#be6ede",
-  action3: "#be6ede",
-  action4: "#be6ede",
-  action5: "#be6ede",
-  action6: "#be6ede",
-  action7: "#be6ede",
-  jewel: "#ded514",
-  good: "#e8cc0b",
-  gift: "#f56de1"
+  yesno: "#be5abe",
+  who: "#50be78",
+  op: "#ff2a12"
 };
+
 function categoryColor(cat) {
   if (CATEGORY_COLORS[cat] !== undefined) {
     return CATEGORY_COLORS[cat];
@@ -181,7 +164,6 @@ function renderToHTML(text, blanks) {
 }
 
 function renderStage() {
-  document.getElementById("p").style.display = 'none';
   const g = document.getElementById("g");
   g.innerHTML = renderToHTML(currentText, currentBlanks);
 }
@@ -225,9 +207,11 @@ document.getElementById("next").addEventListener("click", () => {
     currentSessionHistory,
     currentBlanks
   );
-  console.log("Stages:" + narrative.stages.length);
-  console.log("Last Index: " + stageIndex);
-  console.log("Current Index: " + nextIndex);
+
+  // debug to see where you are at
+  //console.log("Stages:" + narrative.stages.length);
+  //console.log("Last Index: " + stageIndex);
+  //console.log("Current Index: " + nextIndex);
   stageIndex = nextIndex;
 
   
@@ -235,7 +219,6 @@ document.getElementById("next").addEventListener("click", () => {
     document.getElementById("g").classList.remove("unselect");
     document.getElementById("g").innerHTML = finalPoem(currentSessionHistory);
     document.getElementById("next").innerHTML = "reset";
-    document.getElementById("p").style.display = 'inline';
     document.getElementById("m").style.paddingTop = "10px";
     stageIndex++;
     return;
@@ -259,218 +242,68 @@ document.getElementById("next").addEventListener("click", () => {
 ///// THIS IS WHAT UR LOOKING FOR IDIOT 
 
 const STAGE_TRANSITIONS = {
+  // examples
+  //
   // 2: (blanks, locked) => {
   //   if (locked.weapon === 'sword') return 5;
   //   if (locked.weapon === 'bow & arrow') return 7;
   //   return 3;
-  // },
-  // 4: (blanks, locked) => {
-  //   const verbBlank = blanks.find(b => b.category === 'verb');
-  //   if (verbBlank && verbBlank.word === 'roam') return 9;
-  //   return 5;
-  // }
+  // };
+  //
+  // 24: (blanks, locked) => {
+  //    let t = lockedChoices.gift;
+  //    if (t == "+1 mending kit"){
+  //      return 26;
+  //    } else {
+  //      return 25;
+  // };
+  //
 
-  // START TO 2 IS STATIC
   
-  2: (blanks, locked) => {
-    let t = blanks[3].word;
-    //console.log(t);
-    if (t == "attack") {
-      return 4;
-    } else if (t == "flea") {
-      return 5;
+  1: (blanks, locked) => {
+    let t = blanks[0].word;
+    console.log(t);
+    if (t == "yes") {
+      return 3;
     } else {
-      return 16;
+      return 2;
     }
   },
 
-  // we don't talk about line 3
-  // the forgotten line,
-  // erased, forgotten nevermore
-  
-  4: (blanks, locked) => {
-    let t = blanks[3].word;
-    if (t == "destroy it") {
-      return 30;
+  2: (blanks, locked) => {
+    return 4;
+  },
+
+  3: (blanks, locked) => {
+    let t = blanks[1].word;
+    if (t == "yes") {
+      return 5;
     } else {
       return 6;
     }
   },
 
+  4: (blanks, locked) => {
+    return 6;
+  },
+
   5: (blanks, locked) => {
-    return narrative.stages.length;
+    let t = blanks[0].word;
+    if (t == "1998") {
+      return 7;
+    } else {
+      return 6;
+    }
   },
 
   6: (blanks, locked) => {
-    let t = blanks[1].word;
-    if (t == "calm") {
-      return 7;
-    }
-    return 12;
+    return narrative.stages.length;
   },
 
   7: (blanks, locked) => {
-    if(magicUserBaby()) {
-      return 8;
-    } else {
-      return 10;
-    }
-  },
-
-  // 8 will ALWAYS go to 9
-  
-  9: (blanks, locked) => {
     return narrative.stages.length;
-  },
-
-  // 10 can be reached from 7, it will always go to 11
-  
-  11: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  
-  12: (blanks, locked) => {
-    let t = blanks[2].word;
-    if (t == "greed, to keep" || t == "thirst, desire") {
-      return 13;
-    } else {
-      if(magicUserBaby()) {
-        return 14;
-      } else {
-        return 15;
-      }
-    }
-  },
-
-  13: (blanks, locked) => {
-    return narrative.stages.length
-  },
-
-  14: (banks, locked) => {
-    return narrative.stages.length;
-  },
-  15: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  16: (blanks, locked) => {
-    return 17;
-  },
-  17: (blanks, locked) => {
-    let t = blanks[0].word;
-    if(t == "nothing" || t == "tiny marble"){
-      return 18;
-    } else {
-      return 30;
-    }
-  },
-  18: (blanks, locked) => {
-    let t = blanks[1].word;
-    if(t == " shouts ahead" || t == " reaches from ur side"){
-      return 21;
-    } else {
-      return 22;
-    }
-  },
-  19: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  20: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  21: (blanks, locked) => {
-    let t = blanks[1].word;
-    if(t == "warn the others"){
-      return 20;
-    } else if (t == "accept fate") {
-      return 22;
-    } else {
-        return 24;
-    }
-  },
-  22: (blanks,locked) => {
-    return 19;
-  },
-  23: (blanks, locked) => {
-    return 24;
-  },
-  24: (blanks, locked) => {
-    let t = lockedChoices.gift;
-    if (t == "+1 mending kit"){
-      return 26;
-    } else {
-      return 25;
-    };
-  },
-  25: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  26: (blanks, locked) => {
-    return 27;
-  },
-
-  27: (blanks, locked) => {
-    if (magicUserBaby()){
-      return 28;
-    } else {
-      return 29;
-    }
-  },
-  28: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  29: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  30: (blanks, locked) => {
-    let t = lockedChoices.gift
-    console.log(t);
-    if(magicUserBaby() && t == "+1 mending kit") {
-      return 38;
-    } else if(magicUserBaby()) {
-      return 32;
-    } else {
-      return 31;
-    }
-  },
-  31: (blanks, locked) => {
-    let t = blanks[1].word;
-    if(t == "rest"){
-      return 33;
-    } else {
-      return 23;
-    }
-  },
-  32: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  
-  33: (blanks, locked) => {
-    return 34;
-  },
-  34: (blanks, locked) => {
-    let t = lockedChoices.gift;
-    let r = random(1);
-    //console.log(r);
-    if(t == "ball of fire"){
-      return 35;
-    } else if(r > 0.5){
-      return 36;
-    } else {
-      return 37;
-    }
-  },
-  35: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  36: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  37: (blanks, locked) => {
-    return narrative.stages.length;
-  },
-  38: (blanks, locked) => {
-    return 28;
   }
+
 };
 
 function gameStateManager(index, history, blanks) {
@@ -483,17 +316,6 @@ function gameStateManager(index, history, blanks) {
 }
 
 function refresh() {
-  // stageIndex = 0;
-  // currentBlanks = [];
-  // previousBlanks = [];
-  // currentText = "";
-  // currentSessionHistory = [];
-  // document.getElementById("next").innerHTML = "proceed";
-  // lockedChoices = {};
-  // stageIndex = 0;
-  // document.getElementById("g").classList.add("unselect");
-  // document.getElementById("m").style.paddingTop = "0px";
-  //console.log("refreshed");
   location.reload();
 }
 
@@ -506,14 +328,4 @@ function finalPoem(session) {
     }
   });
   return s;
-}
-
-function magicUserBaby() {
-  let w = lockedChoices.weapon;
-
-  if(w == "sword" || w == "bow & arrow" || w == "flail" || w == "shield" || w == "glock") {
-    return false;
-  } else {
-    return true;
-  }
 }
